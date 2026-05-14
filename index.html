@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/output.css">
+    <title>Document</title>
+</head>
+<body class="bg-linear-to-br from-[#4f46e5] to-[#7c3aed] w-full h-screen flex justify-center items-center" >
+    <div class="bg-white flex justify-center flex-col gap-2.5 p-5 rounded-2xl">
+        <h2 class="font-bold text-2xl text-center  ">Guess The Number</h2>
+        <p class="text-gray-500  ">
+            Guess a number between 1 and 100
+        </p>
+        <div class="mb-2">
+            
+            <input type="number" id="number" class="number p-2 w-full border-2 border-b-gray-500 rounded-md text-gray-500 outline-none
+             focus:border-indigo-800 " placeholder="Enter your Guess">
+        </div>
+        <div class="flex justify-center gap-2 ">
+            
+                <button id="guessButton" class="text-white p-3   bg-[#4f46e5] rounded-xl text-center hover:bg-[#7c3aed] transition-all duration-300 ease-in-out disabled:bg-gray-400">Guess</button>
+           
+            
+                <button id="restartButton" class="text-white p-3 bg-[#4f46e5] rounded-xl text-center hover:bg-[#7c3aed] transition-all duration-300 ease-in-out ">Restart</button>
+            
+        </div>
+        <p id="result" class="text-center text-yellow-600 mt-2">
+            
+
+        </p>
+        <p  class="text-center mt-4 text-gray-700">Score:<span id="score"></span> </p>
+
+
+
+    </div>
+    
+    
+
+    <script src="/src/index.js"></script>
+</body>
+</html>
