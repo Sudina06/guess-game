@@ -5,69 +5,62 @@ const result = document.getElementById("result");
 const scoreText = document.getElementById("score");
 var randomNum = Math.floor(Math.random() * 100);
 var score = 100;
-scoreText.innerText = 100;
-var array=[];
+scoreText.innerText = score;
+let array = [];
+let gameEnded = false; //flag
 
-function kaammm(){
-    let num = number.value;
-    if(array.includes(num)){
-        
-        result.innerText="Already guessed";
-        return;
+function kamm() {
+  let num = number.value;
 
-    }
-    array.push(num);
-
-  
-  if(num == ""){
-    result.innerText="Pleasee provide a valueeeee";
+  if (array.includes(num)) {
+    result.innerText = "Already guessed !!";
     return;
   }
-  
 
-  if (num < randomNum) {
-    result.innerText = "Too low!";
-    score-=10;
-    scoreText.innerText=score;
-  } else if (num > randomNum) {
+  if (num == "") {
+    result.innerText = "Enter your guess";
+    return;
+  }
+  array.push(num);
+
+  if (randomNum < num) {
     result.innerText = "Too high!";
-    score-=10;
-    scoreText.innerText=score;
+    score -= 10;
+    scoreText.innerText = score;
+  } else if (randomNum > num) {
+    result.innerText = "Too low!";
+    score -= 10;
+    scoreText.innerText = score;
   } else {
-    result.innerText = `🎉OwO(￣y▽￣)╭ Ohohoho..... Correct!The number was ${randomNum}`;
-  }
-  if(score==0){
-    result.innerText = "Game Lostt!!"
+    result.innerText = "OwOOwOOwOOwOOwO correctttt yayyyy!!!";
     guess.disabled=true;
+    gameEnded = true; //flag 
   }
-  number.value = "";
-  
 
-
+  if (score == 0) {
+    guess.disabled = true;
+    gameEnded = true;
+  }
 }
-function restart(){
+
+guess.addEventListener("click", () => {
+  kamm();
+});
+number.addEventListener("keypress", (event) => {
+  if (event.code == "Enter" && !gameEnded) { // flag
+    kamm();
+  }
+});
+
+restartButton.addEventListener("click", () => {
+    randomNum = Math.floor(Math.random() * 100);
+    guess.disabled = false;
     result.innerText = "";
     score = 100;
-    scoreText.innerText=score;
-    guess.disabled = false;
-
-    randomNum = Math.floor(Math.random() * 100);
+    scoreText.innerText = score;
+    number.value = "";
     array = [];
-
-}
-guess.addEventListener("click", () => {
-    kaammm();
-  
+    gameEnded = false;
+    
 });
-
-number.addEventListener("keypress", (event)=>{
-    if (event.code == "Enter" && score!=0 ){
-        kaammm();
-    }
-
-});
-restartButton.addEventListener("click" , () =>{
-    restart();
-});
-
 
