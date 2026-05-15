@@ -27,6 +27,7 @@ function kamm() {
     result.innerText = "Too high!";
     score -= 10;
     scoreText.innerText = score;
+    
   } else if (randomNum > num) {
     result.innerText = "Too low!";
     score -= 10;
@@ -36,6 +37,7 @@ function kamm() {
     guess.disabled=true;
     gameEnded = true; //flag 
   }
+  number.value = "";
 
   if (score == 0) {
     guess.disabled = true;
